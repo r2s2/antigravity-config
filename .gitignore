@@ -1,0 +1,15 @@
+# Mapeamentos locais e caches
+projects/
+sidecars/
+scratch/
+temp/
+cache/
+
+# Credenciais e segredos
+*.key
+*.pem
+*.env
+*.env.*
+credentials.json
+token.json
+*.log

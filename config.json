@@ -1,0 +1,59 @@
+{
+  "plugins": {
+    "chrome-devtools-plugin": {
+      "enabled": true
+    },
+    "firebase": {
+      "enabled": true
+    },
+    "flutter": {
+      "enabled": true
+    },
+    "google-antigravity-sdk": {
+      "enabled": true
+    },
+    "modern-web-guidance-plugin": {
+      "enabled": true
+    },
+    "science": {
+      "enabled": true
+    }
+  },
+  "userSettings": {
+    "globalPermissionGrants": {
+      "allow": [
+        "command(Get-ChildItem -Path \"d:\\MelhorIA\\Extrai\\Extrai\" -Recurse -File | Measure-Object -Property Length -Sum)",
+        "command(Get-ChildItem -Path \"d:\\MelhorIA\\Extrai\\Extrai\" -Recurse -Force -File | Measure-Object -Property Length -Sum)",
+        "command(git status)",
+        "command(git log)",
+        "command(git log)",
+        "command(git show)",
+        "command(npm run)",
+        "command(git diff)",
+        "command(python -c \"\nimport urllib.request, json, ssl\nctx = ssl._create_unverified_context()\nreq = urllib.request.Request('https://dadosabertos.web.stj.jus.br/api/3/action/package_list', headers={\n    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    'Accept': 'application/json, text/javascript, */*; q=0.01'\n})\nwith urllib.request.urlopen(req, context=ctx, timeout=15) as resp:\n    data = json.loads(resp.read().decode())\n    for name in data.get('result', []):\n        print(name)\n\")",
+        "command(python -c \"\nimport urllib.request, json, ssl\nctx = ssl._create_unverified_context()\nheaders = {\n    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    'Accept': 'application/json'\n}\nreq = urllib.request.Request('https://dadosabertos.web.stj.jus.br/api/3/action/package_show?id=integras-de-decisoes-terminativas-e-acordaos-do-diario-da-justica', headers=headers)\nwith urllib.request.urlopen(req, context=ctx, timeout=20) as resp:\n    pkg = json.loads(resp.read().decode())['result']\n    resources = pkg['resources']\n    print('Total de recursos:', len(resources))\n    print('Últimos 10 recursos:')\n    for r in resources[-10:]:\n        print(f\\\"- Nome: {r.get('name')}, Formato: {r.get('format')}, Data/Modificado: {r.get('last_modified') or r.get('created')}, URL: {r.get('url')}\\\")\n\")",
+        "command(python C:\\Users\\RODRIGO\\.gemini\\antigravity\\brain\\117bb235-5b87-4f47-bc89-ef35177708e1\\scratch\\check_stj.py)",
+        "command(python -c \"\nimport os\nprint('Cwd:', os.getcwd())\nprint('Subdiretórios:', [d for d in os.listdir('.') if os.path.isdir(d)])\n\")",
+        "command(python -c \"\nimport os\ntry:\n    print('D:\\\\MelhorIA\\\\Extrai:', os.listdir('D:\\\\MelhorIA\\\\Extrai'))\nexcept Exception as e:\n    print(e)\n\")",
+        "command(python -c \"\nimport urllib.request, json, ssl\nctx = ssl._create_unverified_context()\nheaders = {\n    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    'Accept': 'application/json'\n}\nreq = urllib.request.Request('https://dadosabertos.web.stj.jus.br/dataset/a2cd85cc-1391-4ebc-aeed-a45dd75a7987/resource/8c99adde-1d7e-4d88-9f90-e8f6e6256ac3/download/metadados20260824.json', headers=headers)\nwith urllib.request.urlopen(req, context=ctx, timeout=20) as resp:\n    chunk = resp.read(2048).decode('utf-8', errors='ignore')\n    print('Tamanho total cabeçalho content-length:', resp.headers.get('Content-Length'))\n    print('Amostra de dados:')\n    print(chunk[:1000])\n\")",
+        "command(python -c \"\nimport urllib.request, json, ssl\nctx = ssl._create_unverified_context()\nheaders = {\n    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    'Accept': 'application/json'\n}\nreq = urllib.request.Request('https://dadosabertos.web.stj.jus.br/api/3/action/package_show?id=integras-de-decisoes-terminativas-e-acordaos-do-diario-da-justica', headers=headers)\nwith urllib.request.urlopen(req, context=ctx, timeout=30) as resp:\n    data = json.loads(resp.read().decode())\n    resources = data['result']['resources']\n    \n    # Agrupar por data\n    by_date = {}\n    for r in resources:\n        name = r.get('name', '')\n        fmt = r.get('format', '').upper()\n        # extrair data do nome (ex: metadados20260824 ou 20260824.zip)\n        digits = ''.join([c for c in name if c.isdigit()])\n        if len(digits) == 8:\n            d = digits\n            if d not in by_date:\n                by_date[d] = {}\n            by_date[d][fmt] = {\n                'url': r.get('url'),\n                'size': r.get('size'),\n                'name': name\n            }\n    \n    sorted_dates = sorted(by_date.keys(), reverse=True)\n    print(f'Total de dias com publicações: {len(sorted_dates)}')\n    print('Últimos 10 dias disponíveis:')\n    for d in sorted_dates[:10]:\n        fmt_str = f'{d[6:8]}/{d[4:6]}/{d[0:4]}'\n        has_meta = 'JSON' in by_date[d]\n        has_zip = 'ZIP' in by_date[d]\n        print(f'- Data: {fmt_str} (ID: {d}) | Metadados JSON: {has_meta} | Textos ZIP: {has_zip}')\n\")",
+        "command(python -c \"\nimport os\nfor root, dirs, files in os.walk('d:\\\\MelhorIA'):\n    for f in files:\n        if '2026' in f or 'monocratica' in f.lower() or f.endswith('.zip'):\n            print(os.path.join(root, f))\n    if len(dirs) \u003e 20:\n        dirs[:] = [d for d in dirs if not d.startswith('.')]\n\")",
+        "command(python -c \"\nimport os\nprint('D:\\\\:', os.listdir('D:\\\\'))\n\")",
+        "command(python -c \"\nimport os\ntry:\n    print('D:\\\\Extrai1:', os.listdir('D:\\\\Extrai1')[:30])\nexcept Exception as e:\n    print(e)\n\")",
+        "read_file(D:\\Extrai1\\comandos.md)",
+        "command(python -c \"\nimport os\nfor p in [r'D:\\MelhorIA\\Extrai\\Extrai\\stj_orquestrador_mestre.py', r'D:\\Extrai1\\stj_orquestrador_mestre.py']:\n    print(p, '-\u003e Existe?', os.path.exists(p))\n\")",
+        "read_file(D:\\Extrai1\\stj_orquestrador_mestre.py)",
+        "read_file(D:\\Extrai1)",
+        "command(python -c \"\nimport os\nfor root, dirs, files in os.walk('D:\\\\Extrai1'):\n    for d in dirs:\n        if 'monocratica' in d.lower() or 'stj' in d.lower():\n            print(os.path.join(root, d))\n    break\nprint('Pastas de D:\\\\Extrai1:', [d for d in os.listdir('D:\\\\Extrai1') if os.path.isdir(os.path.join('D:\\\\Extrai1', d))])\n\")",
+        "command(python -c \"\nimport os\npath = r'D:\\Extrai1\\Monocráticas'\nfiles = os.listdir(path)\nprint('Total de arquivos em D:\\\\Extrai1\\\\Monocráticas:', len(files))\nprint('Amostra de arquivos (primeiros 5):', files[:5])\nprint('Amostra de arquivos (últimos 10):', files[-10:])\n\")",
+        "command(python -c \"\nimport os, re\npath = r'D:\\Extrai1\\Monocráticas'\nfiles = os.listdir(path)\ndates = []\nfor f in files:\n    m = re.search(r'202[0-9]{5}', f)\n    if m:\n        dates.append(m.group(0))\ndates = sorted(list(set(dates)))\nprint('Total de datas distintas baixadas:', len(dates))\nprint('Primeira data baixada:', dates[0] if dates else 'Nenhuma')\nprint('Últimas 10 datas baixadas:')\nfor d in dates[-10:]:\n    print('-', d)\n\")",
+        "command(python -c \"\nimport os, json, urllib.request, ssl\n\nctx = ssl._create_unverified_context()\nheaders = {\n    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    'Accept': 'application/json'\n}\n\nbase_dir = r'D:\\Extrai1\\Monocráticas'\nexisting_files = set(os.listdir(base_dir))\n\nurl = 'https://dadosabertos.web.stj.jus.br/api/3/action/package_show?id=integras-de-decisoes-terminativas-e-acordaos-do-diario-da-justica'\nreq = urllib.request.Request(url, headers=headers)\nwith urllib.request.urlopen(req, context=ctx, timeout=30) as resp:\n    data = json.loads(resp.read().decode())\n\nresources = data['result']['resources']\nallowed = ['zip', 'json', 'csv']\n\nmissing = []\nfor r in resources:\n    name = r.get('name', '')\n    fmt = r.get('format', '').lower()\n    if fmt not in allowed:\n        continue\n    ext = f'.{fmt}'\n    fname = name if name.lower().endswith(ext) else f'{name}{ext}'\n    if fname not in existing_files:\n        missing.append({\n            'name': fname,\n            'url': r.get('url'),\n            'format': fmt,\n            'size': r.get('size')\n        })\n\nprint(f'Total de recursos no STJ: {len(resources)}')\nprint(f'Arquivos já existentes em {base_dir}: {len(existing_files)}')\nprint(f'Total de arquivos PENDENTES a partir do último: {len(missing)}')\nif missing:\n    print('Primeiros 5 pendentes:', [m['name'] for m in missing[:5]])\n    print('Últimos 5 pendentes:', [m['name'] for m in missing[-5:]])\n\")",
+        "command(python -c \"\nimport tqdm\nprint('tqdm está disponível!')\n\")",
+        "command(python download_monocraticas.py --dry-run)"
+      ]
+    },
+    "remoteControlEnabled": true,
+    "remoteControlHostname": "desktop-6d5h7t7-silent-drift",
+    "themeMode": "THEME_MODE_DARK"
+  }
+}
