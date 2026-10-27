@@ -1,0 +1,12 @@
+{
+  "userSettings": {
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_TURBO",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
+    "enableTerminalSandbox": false,
+    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
+    "permissionPreset": "AGENT_PERMISSION_PRESET_TURBO",
+    "queuedMessageDeliveryStrategy": "MESSAGE_DELIVERY_STRATEGY_NEXT_INVOCATION",
+    "remoteControlEnabled": true,
+    "remoteControlHostname": "STJ"
+  }
+}
